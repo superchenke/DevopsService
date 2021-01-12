@@ -1,0 +1,25 @@
+:3PsHT$K.5y)c
+
+5f9c0056a7cc408298aa36b807edeb32
+http://123.207.207.47:8081/
+
+安装jdk
+yum install -y java-1.8.0-openjdk-devel.x86_64
+
+安装jenkins
+
+yum的repos中默认是没有Jenkins的，需要先将Jenkins存储库添加到yum repos
+1,sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+2,sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+3,yum install jenkins
+
+修改启动用户和端口，避免与tomcat端口冲突
+1，vi /etc/sysconfig/jenkins
+2，JENKINS_USER="root"
+3，JENKINS_PORT="8081"
+
+启动jenkins
+service jenkins start
+在登陆页面输入密码，密码通过下面命令找到复制过去
+tail /var/lib/jenkins/secrets/initialAdminPassword
+
